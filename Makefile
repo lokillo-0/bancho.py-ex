@@ -5,7 +5,7 @@ build:
 	docker build -t bancho:latest .
 
 run:
-	docker compose up bancho mysql redis
+	docker compose up bancho mysql valkey
 
 go:
 	docker attach banchopy-ex_bancho_1
@@ -17,7 +17,7 @@ run-s:
 	docker-compose up -d bancho
 
 run-bg:
-	docker compose up -d bancho mysql redis
+	docker compose up -d bancho mysql valkey
 
 run-cfd:
 	docker compose -f docker-compose.cloudflared.yml up
@@ -30,13 +30,13 @@ run-caddy:
 
 last?=1
 logs:
-	docker compose logs -f bancho mysql redis --tail ${last}
+	docker compose logs -f bancho mysql valkey --tail ${last}
 
 shell:
 	poetry shell
 
 test:
-	docker compose -f docker-compose.test.yml up -d bancho-test mysql-test redis-test
+	docker compose -f docker-compose.test.yml up -d bancho-test mysql-test valkey-test
 	docker compose -f docker-compose.test.yml exec -T bancho-test /srv/root/scripts/run-tests.sh
 
 lint:
