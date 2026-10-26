@@ -35,7 +35,8 @@ class Database:
     async def disconnect(self) -> None:
         await self._database.disconnect()
 
-    def _compile(self, clause_element: ClauseElement) -> tuple[str, MySQLParams]:
+    @staticmethod
+    def _compile(clause_element: ClauseElement) -> tuple[str, MySQLParams]:
         compiled: Compiled = clause_element.compile(
             dialect=DIALECT,
             compile_kwargs={"render_postcompile": True},

@@ -14,8 +14,8 @@ from app.logging import magnitude_fmt_time
 
 
 class MetricsMiddleware(BaseHTTPMiddleware):
+    @staticmethod
     async def dispatch(
-        self,
         request: Request,
         call_next: RequestResponseEndpoint,
     ) -> Response:
