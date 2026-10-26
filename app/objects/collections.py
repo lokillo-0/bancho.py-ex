@@ -189,8 +189,8 @@ class Players(list[Player]):
 
         return None
 
+    @staticmethod
     async def get_sql(
-        self,
         id: int | None = None,
         name: str | None = None,
         irc_key: str | None = None,

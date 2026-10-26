@@ -28,5 +28,6 @@ def dumps(data: Any) -> bytes:
 class ORJSONResponse(JSONResponse):
     media_type = "application/json"
 
-    def render(self, content: Any) -> bytes:
+    @staticmethod
+    def render(content: Any) -> bytes:
         return dumps(content)
